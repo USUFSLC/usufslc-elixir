@@ -4,5 +4,5 @@ This repo hosts the code for the FSLC website.
 
 If you feel so inclined, please contribute!
 
-![Screenshot](screenshots/initial.png "Screenshot")
+![Screenshot](/screenshots/initial.png "Screenshot")
 
