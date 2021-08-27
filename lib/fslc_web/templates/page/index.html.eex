@@ -1,0 +1,33 @@
+<p>
+  <span class="prompt"></span><span class="command">more When.txt</span>
+</p>
+<p>
+  Every Wednesday at 6:00 PM.
+</p>
+<p>
+  <span class="prompt"></span><span class="command">more Where.txt</span>
+</p>
+<p>
+  We meet in the Eccles Science Building (ESLC) in room 049/051.
+</p>
+<p>
+  <span class="prompt"></span><span class="command">more Who.txt</span>
+</p>
+<p>
+  Those who have an interest in software, computers, or who just want to learn more and hang 
+  out with awesome people!
+</p>
+<p>
+  <span class="prompt"></span><span class="command">more Contact.txt</span>
+</p>
+<p>
+  We mainly chat over <a href="https://discord.gg/R6fEGUJan6">Discord</a>, but you can also
+  email us at <a href="mailto:usufslc@gmail.com">usufslc@gmail.com</a>!
+  <br>
+</p>
+<p>
+  You also might meet us randomly in our office tinkering with hardware!
+</p>
+<script>
+  $(".prompt").html("guest@internet ~ $ ");
+</script>

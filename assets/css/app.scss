@@ -1,0 +1,63 @@
+@font-face {
+  font-family: Ubuntu;
+  src: url("/fonts/ubuntu-regular.ttf")
+}
+
+$background:black;
+$light-orange:#e4c85c;
+$muted-pink:#f96e87;
+$purpleish:#6654fc;
+$turquoise:#22c6a9;
+$green:#00ff80;
+
+
+html, body {
+  background-color: $background;
+  font-family: Ubuntu;
+  color: $green;
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 5px;
+  border-bottom: 2px solid $purpleish;
+  width:100%;
+}
+
+main {
+  text-align: center;
+}
+
+.top-content {
+  min-height: calc(100% - 10px); /* 100% will add a nasty overflow-y scroller */
+  margin-bottom: -30px; 
+}
+
+.container {
+  width:80%;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: auto;
+  text-align: left;
+}
+
+@media screen and (max-width: 992px) {
+  .container {
+    width: 100%;
+  }
+}
+
+
+.push, footer {
+  height: 30px;
+}
+
+footer {
+  padding-top: 5px;
+  padding-left: 5px;
+  border-top: 2px solid $purpleish;
+}
+
+@import "fslc.scss"
