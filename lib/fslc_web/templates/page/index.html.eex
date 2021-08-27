@@ -21,13 +21,26 @@
   <span class="prompt"></span><span class="command">more Contact.txt</span>
 </p>
 <p>
-  We mainly chat over <a href="https://discord.gg/R6fEGUJan6">Discord</a>, but you can also
-  email us at <a href="mailto:usufslc@gmail.com">usufslc@gmail.com</a>!
+  We mainly chat over <a href="https://discord.gg/R6fEGUJan6">Discord</a>, but you can email
+  us at <a href="mailto:usufslc@gmail.com">usufslc@gmail.com</a>!
   <br>
-</p>
-<p>
   You also might meet us randomly in our office tinkering with hardware!
 </p>
+<p>
+  <span class="prompt"></span><span class="command">more TODO.md</span>
+</p>
+<p>
+  <ul>
+    <li>Implement user authentication</li>
+    <li>Voting for leadership</li>
+    <li>List of current leadership and active members</li>
+    <li>Reserve-a-box</li>
+    <li>User Blogs</li>
+    <li>A long way off, but maybe a git hosting platform</li>
+    <li>Forum??</li>
+  </ul>
+</p>
+
 <script>
   $(".prompt").html("guest@internet ~ $ ");
 </script>

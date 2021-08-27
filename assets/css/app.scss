@@ -24,7 +24,19 @@ header {
   padding: 5px;
   border-bottom: 2px solid $purpleish;
   width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
+
+.header-left {
+}
+.header-right {
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+
 
 main {
   text-align: center;
@@ -43,7 +55,7 @@ main {
   text-align: left;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 800px) {
   .container {
     width: 100%;
   }
