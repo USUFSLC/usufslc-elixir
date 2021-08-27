@@ -5,7 +5,7 @@
 ```
 cd ~
 sudo pacman -Syu
-sudo pacman -S postgresql erlang elixir openssl python python2 inotify-tools git base-devel wget npm6 nodejs-lts-fermium certbot
+sudo pacman -S postgresql erlang elixir openssl python inotify-tools git npm6 nodejs-lts-fermium
 ```
 
 ### Configure postgresql
