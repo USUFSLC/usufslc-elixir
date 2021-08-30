@@ -1,0 +1,33 @@
+version: '3'
+
+networks:
+  static:
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.22.0.0/16
+
+services:
+  prod:
+    image: "fslc/website"
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env.prod
+    networks:
+      static:
+        ipv4_address: 172.22.0.102
+    depends_on:
+      - 'db'
+  db:
+    image: 'postgres:latest'
+    networks:
+      static:
+        ipv4_address: 172.22.0.100
+    env_file:
+      - .env.prod
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
