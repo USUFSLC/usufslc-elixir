@@ -98,7 +98,7 @@ cd fslc-website
 * Get dependencies
 ```
 mix deps.get
-cd assets && npm install && node node_modules/webpack/bin/webpack.js --mode development
+cd assets && npm -ci && node node_modules/webpack/bin/webpack.js --mode development
 mix deps.compile
 ```
 
