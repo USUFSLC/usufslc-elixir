@@ -105,7 +105,7 @@ mix deps.compile
 * Add the database password to the dev server startup script
 
 ```
-sed -i "s/POSTGRES_PASS=.*$/POSTGRES_PASS=\"$postgresql_password\"/g" start_dev_server.sh
+sed -i "s/POSTGRES_PASS=.*$/POSTGRES_PASS=\"$postgresql_password\"/g" .env 
 ```
 
 * Add the app database for phoenix
