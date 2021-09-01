@@ -102,10 +102,15 @@ cd assets && npm -ci && node node_modules/webpack/bin/webpack.js --mode developm
 mix deps.compile
 ```
 
-* Add the database password to the dev server startup script
+* Configure your .env
 
 ```
-sed -i "s/POSTGRES_PASS=.*$/POSTGRES_PASS=\"$postgresql_password\"/g" .env 
+echo "
+POSTGRES_USER=postgres
+POSTGRES_PASS=$postgresql_password
+POSTGRES_HOSTNAME=localhost
+HTTP_PORT=4000
+" > .env
 ```
 
 * Add the app database for phoenix

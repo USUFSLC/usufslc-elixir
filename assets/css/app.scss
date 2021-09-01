@@ -44,7 +44,7 @@ main {
 
 .top-content {
   min-height: calc(100% - 10px); /* 100% will add a nasty overflow-y scroller */
-  margin-bottom: -30px; 
+  margin-bottom: -30px;
 }
 
 .container {
@@ -57,7 +57,7 @@ main {
 
 @media screen and (max-width: 800px) {
   .container {
-    width: 100%;
+    width: 95%;
   }
 }
 
