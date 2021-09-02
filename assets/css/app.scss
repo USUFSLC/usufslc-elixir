@@ -6,10 +6,11 @@
 $background:black;
 $light-orange:#e4c85c;
 $muted-pink:#f96e87;
+$error-red:#ff0000;
 $purpleish:#6654fc;
 $turquoise:#22c6a9;
 $green:#00ff80;
-
+$blue:#193e75;
 
 html, body {
   background-color: $background;
@@ -46,30 +47,36 @@ main {
   min-height: calc(100% - 10px); /* 100% will add a nasty overflow-y scroller */
   margin-bottom: -30px;
 }
-
-.container {
+.content-container {
   width:80%;
+  max-width: 900px;
   padding-left: 5px;
   padding-right: 5px;
   margin: auto;
   text-align: left;
 }
-
 @media screen and (max-width: 800px) {
-  .container {
+  .content-container {
     width: 95%;
   }
 }
 
-
 .push, footer {
   height: 30px;
 }
-
 footer {
   padding-top: 5px;
   padding-left: 5px;
   border-top: 2px solid $purpleish;
+}
+
+.alert {
+  text-align: left;
+}
+
+.alert-danger, .invalid-feedback {
+  color: $error-red;
+  font-size: 1.1em;
 }
 
 @import "fslc.scss"

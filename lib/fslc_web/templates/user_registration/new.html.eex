@@ -1,0 +1,41 @@
+<h1>Register</h1>
+
+<%= form_for @changeset, Routes.user_registration_path(@conn, :create), fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <p><span class="prompt"></span> <span class="command">read user_email</span></p>
+  <%= email_input f, :email, required: true %>
+  <%= error_tag f, :email %>
+
+  <p><span class="prompt"></span> <span class="command">more name_convention.md</span></p>
+  <p>
+    If you are a member of the FSLC <a href="https://discord.gg/R6fEGUJan6">Discord</a>,
+    please use your Discord handle if you would like your account's content to be associated
+    by other members of the club.
+  </p>
+  <p><span class="prompt"></span> <span class="command">read -s user_name</span></p>
+  <%= label f, :username %>
+  <%= text_input f, :username, required: true %>
+  <%= error_tag f, :username %>
+
+  <p><span class="prompt"></span> <span class="command">read -s user_password</span></p>
+  <%= label f, :password %>
+  <%= password_input f, :password, required: true %>
+  <%= error_tag f, :password %>
+
+
+
+
+  <div>
+    <%= submit "Register" %>
+  </div>
+<% end %>
+
+<p>
+  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %> |
+  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
+</p>

@@ -14,7 +14,7 @@
   <span class="prompt"></span><span class="command">more Who.txt</span>
 </p>
 <p>
-  Those who have an interest in software, computers, or who just want to learn more and hang 
+  Those who have an interest in software, computers, or who just want to learn more and hang
   out with awesome people!
 </p>
 <p>
@@ -40,7 +40,3 @@
     <li>Forum??</li>
   </ul>
 </p>
-
-<script>
-  $(".prompt").html("guest@internet ~ $ ");
-</script>

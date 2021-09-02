@@ -16,13 +16,20 @@
           <a style="text-decoration: none" href="<%= Routes.page_path(@conn, :index) %>"><h1 class="title">USU Free Software and Linux Club</h1></a>
         </div>
         <div class="header-right">
-          <a href="<%= Routes.page_path(@conn, :index) %>">Home</a>
+          <%= link "Home", to: Routes.page_path(@conn, :index) %>
+          <%= if @current_user do %>
+            <%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %>
+            <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %>
+          <% else %>
+            <%= link "Register", to: Routes.user_registration_path(@conn, :new) %>
+            <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
+          <% end %>
         </div>
       </header>
       <main role="main">
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
         <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-        <div class="container">
+        <div class="content-container">
           <%= @inner_content %>
         </div>
       </main>
@@ -33,4 +40,5 @@
       <a href="<%= Routes.page_path(@conn, :disclaimer) %>">Disclaimer</a>
     </footer>
   </body>
+  <%= render(FslcWeb.UserSessionView, "js_injects.html", %{current_user: @current_user}) %>
 </html>
