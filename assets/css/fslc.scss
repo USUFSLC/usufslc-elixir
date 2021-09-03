@@ -18,6 +18,32 @@ h1 {
   color: $purpleish;
 }
 
-input {
-  display: block;
+input, select{
+  font-family: Ubuntu;
+  color: $turquoise;
+  border-bottom: 1px solid green;
+  border-style: none none solid none;
+  background-color: black;
+  font-size: 1em;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px black inset !important;
+}
+/*Change text in autofill textbox*/
+input:-webkit-autofill
+{
+ -webkit-text-fill-color: $turquoise !important;
 }

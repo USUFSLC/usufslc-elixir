@@ -7,9 +7,12 @@
     </div>
   <% end %>
 
-  <p><span class="prompt"></span> <span class="command">read user_email</span></p>
-  <%= email_input f, :email, required: true %>
-  <%= error_tag f, :email %>
+  <p><span class="prompt"></span> <span class="command">printf "Email >" && read user_email</span></p>
+  <p>
+    Email >
+    <%= email_input f, :email, required: true %>
+    <%= error_tag f, :email %>
+  </p>
 
   <p><span class="prompt"></span> <span class="command">more name_convention.md</span></p>
   <p>
@@ -17,15 +20,20 @@
     please use your Discord handle if you would like your account's content to be associated
     by other members of the club.
   </p>
-  <p><span class="prompt"></span> <span class="command">read -s user_name</span></p>
-  <%= label f, :username %>
-  <%= text_input f, :username, required: true %>
-  <%= error_tag f, :username %>
 
-  <p><span class="prompt"></span> <span class="command">read -s user_password</span></p>
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
-  <%= error_tag f, :password %>
+  <p><span class="prompt"></span> <span class="command">printf "Username >" && read user_name</span></p>
+  <p>
+    Username >
+    <%= text_input f, :username, required: true %>
+    <%= error_tag f, :username %>
+  </p>
+
+  <p><span class="prompt"></span> <span class="command">printf "Password >" && read -s user_password</span></p>
+  <p>
+    Password >
+    <%= password_input f, :password, required: true %>
+    <%= error_tag f, :password %>
+  </p>
 
 
 

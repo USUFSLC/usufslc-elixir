@@ -7,14 +7,23 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+  <p><span class="prompt"></span> <span class="command">printf "Email >" && read user_email</span></p>
+  <p>
+    Email >
+    <%= email_input f, :email, required: true %>
+  </p>
 
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
+  <p><span class="prompt"></span> <span class="command">printf "Password >" && read -s user_password</span></p>
+  <p>
+    Password >
+    <%= password_input f, :password, required: true %>
+  </p>
 
-  <%= label f, :remember_me, "Keep me logged in for 60 days" %>
-  <%= checkbox f, :remember_me %>
+  <p><span class="prompt"></span> <span class="command">sbcl --eval "(y-or-n-p \"Keep me logged in for 60 days >\")"</span></p>
+  <p>
+    Keep me logged in for 60 days >(y or n)
+    <%= checkbox f, :remember_me %>
+  </p>
 
   <div>
     <%= submit "Log in" %>
