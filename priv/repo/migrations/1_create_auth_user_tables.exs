@@ -6,12 +6,15 @@ defmodule Fslc.Repo.Migrations.CreateUsersAuthTables do
 
     create table(:users) do
       add :email, :citext, null: false
+      add :username, :text
       add :hashed_password, :string, null: false
       add :confirmed_at, :naive_datetime
+
+      add :role_id, references(:account_roles)
       timestamps()
     end
 
-    create unique_index(:users, [:email])
+    create unique_index(:users, [:email, :username])
 
     create table(:users_tokens) do
       add :user_id, references(:users, on_delete: :delete_all), null: false

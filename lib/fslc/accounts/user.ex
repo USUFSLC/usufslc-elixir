@@ -5,10 +5,12 @@ defmodule Fslc.Accounts.User do
   @derive {Inspect, except: [:password]}
   schema "users" do
     field :email, :string
+    field :username, :string
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :confirmed_at, :naive_datetime
-    field :username, :string
+
+    belongs_to :role, Fslc.Accounts.Role
 
     timestamps()
   end
