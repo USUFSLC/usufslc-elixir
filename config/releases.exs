@@ -4,6 +4,11 @@
 # remember to add this file to your .gitignore.
 import Config
 
+
+config :fslc, Fslc.Mailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_key: System.get_env("SENDGRID_API_KEY")
+
 database_url =
   System.get_env("DATABASE_URL") ||
     raise """
