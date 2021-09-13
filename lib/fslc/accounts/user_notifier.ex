@@ -1,6 +1,5 @@
 defmodule Fslc.Accounts.UserNotifier do
   use Phoenix.Swoosh, view: FslcWeb.EmailView, layout: {FslcWeb.LayoutView, :email}
-  alias FslcWeb.UserEmail
 
   alias Fslc.Mailer
 
