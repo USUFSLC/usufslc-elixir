@@ -1,0 +1,4 @@
+<h1> <%= @user.username %> </h1>
+<p>An email change was requested. You can change this by visiting the link below.</p>
+
+<a href="<%= @link %>"><%= @link %></a>

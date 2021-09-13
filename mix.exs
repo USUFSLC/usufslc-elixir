@@ -34,8 +34,8 @@ defmodule Fslc.MixProject do
   defp deps do
     [
       {:bcrypt_elixir, "~> 2.0"},
-      {:phoenix, "~> 1.5.9"},
-      {:phoenix_ecto, "~> 4.1"},
+      {:phoenix, "~> 1.5.12"},
+      {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.4"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
@@ -46,7 +46,10 @@ defmodule Fslc.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:phx_gen_auth, "~> 0.7"}
+      {:phx_gen_auth, "~> 0.7"},
+      {:swoosh, "~> 1.4"},
+      {:phoenix_swoosh, "~> 0.3.4"},
+      {:hackney, "~> 1.17"},
     ]
   end
 

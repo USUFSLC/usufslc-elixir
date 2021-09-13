@@ -7,6 +7,7 @@ $background:black;
 $light-orange:#e4c85c;
 $muted-pink:#f96e87;
 $error-red:#ff0000;
+$dark-red:#591815;
 $purpleish:#6654fc;
 $turquoise:#22c6a9;
 $green:#00ff80;
@@ -77,6 +78,9 @@ footer {
 .alert-danger {
   color: $error-red;
   font-size: 1.1em;
+}
+.invalid-feedback  {
+  color: $error-red;
 }
 
 @import "fslc.scss"

@@ -15,4 +15,6 @@ import "../css/app.scss"
 import "phoenix_html"
 
 import $ from "jquery-min";
+import lemonade from "lemonadejs";
 global.$ = global.jQuery = $;
+global.lemonade = lemonade;

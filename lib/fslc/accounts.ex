@@ -211,6 +211,16 @@ defmodule Fslc.Accounts do
     end
   end
 
+
+  def change_username(user, attrs \\ %{}) do
+    User.username_changeset(user, attrs)
+  end
+
+  def update_username(user, attrs) do
+    User.username_changeset(user, attrs)
+    |> Repo.update()
+  end
+
   ## Session
 
   @doc """
@@ -263,6 +273,10 @@ defmodule Fslc.Accounts do
     end
   end
 
+  def unconfirm_user(user) do
+    user
+  end
+
   @doc """
   Confirms a user by the given token.
 
@@ -278,6 +292,7 @@ defmodule Fslc.Accounts do
       _ -> :error
     end
   end
+
 
   defp confirm_user_multi(user) do
     Ecto.Multi.new()

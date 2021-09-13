@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>FSLC</title>
+    <title>FSLC @ USU</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <link rel = "icon" href="<%= Routes.static_path(@conn, "/images/favicon.ico")%>" type = "image/x-icon">
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
@@ -27,9 +27,19 @@
         </div>
       </header>
       <main role="main">
-        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
         <div class="content-container">
+          <%= if get_flash(@conn, :info) do %>
+            <p class="alert alert-info" role="alert">
+              <%= get_flash(@conn, :info) %>
+              <a href="javascript:void(0)" onclick="this.parentElement.style.display='none'">Close</a>
+            </p>
+          <% end %>
+          <%= if get_flash(@conn, :error) do %>
+            <p class="alert alert-danger" role="alert">
+              <%= get_flash(@conn, :error) %>
+              <a href="javascript:void(0)" onclick="this.parentElement.style.display='none'">Close</a>
+            </p>
+          <% end %>
           <%= @inner_content %>
         </div>
       </main>
@@ -40,5 +50,8 @@
       <a href="<%= Routes.page_path(@conn, :disclaimer) %>">Disclaimer</a>
     </footer>
   </body>
-  <%= render(FslcWeb.UserSessionView, "js_injects.html", %{current_user: @current_user}) %>
+
+  <script>
+    $(".prompt").html("<%= if @current_user do @current_user.username else 'guest' end %>@usufslc ~ $ ");
+  </script>
 </html>

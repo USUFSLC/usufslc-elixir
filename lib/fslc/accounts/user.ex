@@ -46,6 +46,7 @@ defmodule Fslc.Accounts.User do
     |> validate_format(:username, ~r/^[a-z0-9_\-]*$/,
       message: "only lowercase letters, numbers, underscores, and hyphens allowed"
     )
+    |> unsafe_validate_unique(:username, Fslc.Repo)
     |> unique_constraint(:username)
   end
 
@@ -113,6 +114,12 @@ defmodule Fslc.Accounts.User do
     |> cast(attrs, [:password])
     |> validate_confirmation(:password, message: "does not match password")
     |> validate_password(opts)
+  end
+
+  def username_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:username])
+    |> validate_username()
   end
 
   @doc """

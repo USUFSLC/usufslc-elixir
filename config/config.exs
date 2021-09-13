@@ -10,6 +10,10 @@ use Mix.Config
 config :fslc,
   ecto_repos: [Fslc.Repo]
 
+config :fslc, Fslc.Mailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_key: System.get_env("SENDGRID_API_KEY")
+
 # Configures the endpoint
 config :fslc, FslcWeb.Endpoint,
   url: [host: "localhost"],

@@ -21,7 +21,7 @@
 
   <p><span class="prompt"></span> <span class="command">sbcl --eval "(y-or-n-p \"Keep me logged in for 60 days >\")"</span></p>
   <p>
-    Keep me logged in for 60 days >(y or n)
+    Keep me logged in for 60 days > 
     <%= checkbox f, :remember_me %>
   </p>
 

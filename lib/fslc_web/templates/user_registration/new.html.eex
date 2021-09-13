@@ -11,6 +11,7 @@
   <p>
     Email >
     <%= email_input f, :email, required: true %>
+    <br>
     <%= error_tag f, :email %>
   </p>
 
@@ -25,6 +26,7 @@
   <p>
     Username >
     <%= text_input f, :username, required: true %>
+    <br>
     <%= error_tag f, :username %>
   </p>
 
@@ -32,6 +34,7 @@
   <p>
     Password >
     <%= password_input f, :password, required: true %>
+    <br>
     <%= error_tag f, :password %>
   </p>
 

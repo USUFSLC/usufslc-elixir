@@ -16,6 +16,7 @@ defmodule FslcWeb.UserSettingsController do
 
     case Accounts.apply_user_email(user, password, user_params) do
       {:ok, applied_user} ->
+        Accounts.unconfirm_user(user)
         Accounts.deliver_update_email_instructions(
           applied_user,
           user.email,
@@ -50,6 +51,23 @@ defmodule FslcWeb.UserSettingsController do
     end
   end
 
+
+  def update(conn, %{"action" => "update_username"} = params) do
+    user = conn.assigns.current_user
+
+    case Accounts.update_username(user, params["user"]) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "Username updated successfully.")
+        |> put_session(:user_return_to, Routes.user_settings_path(conn, :edit))
+        |> UserAuth.log_in_user(user)
+
+      {:error, changeset} ->
+        render(conn, "edit.html", username_changeset: changeset)
+    end
+
+  end
+
   def confirm_email(conn, %{"token" => token}) do
     case Accounts.update_user_email(conn.assigns.current_user, token) do
       :ok ->
@@ -70,5 +88,6 @@ defmodule FslcWeb.UserSettingsController do
     conn
     |> assign(:email_changeset, Accounts.change_user_email(user))
     |> assign(:password_changeset, Accounts.change_user_password(user))
+    |> assign(:username_changeset, Accounts.change_username(user))
   end
 end

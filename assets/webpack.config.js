@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const lemonade = require("lemonadejs");
 
 module.exports = (env, options) => {
   const devMode = options.mode !== 'production';
@@ -50,7 +51,8 @@ module.exports = (env, options) => {
       new CopyWebpackPlugin([{ from: 'static/', to: '../' }]),
       new webpack.ProvidePlugin({
         $: "jquery-min",
-        jQuery: "jquery-min"
+        jQuery: "jquery-min",
+        lemonade: "lemonadejs"
       })
     ]
     .concat(devMode ? [new HardSourceWebpackPlugin()] : [])
