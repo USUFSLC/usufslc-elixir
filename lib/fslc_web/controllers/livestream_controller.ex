@@ -4,8 +4,15 @@ defmodule FslcWeb.LivestreamController do
   import Plug.Conn
   use FslcWeb, :controller
 
+  defp delete_old_streams() do
+    from(stream in Fslc.Livestream, where: stream.expiration < fragment("now()"))
+    |> Repo.delete_all
+  end
+
   def index(conn, _params) do
-    render(conn, "index.html")
+    conn
+    |> put_flash(:info, "NOTICE: Your stream is most likely muted when autoplaying.")
+    |> render("index.html")
   end
 
   def create(conn, _params) do
@@ -19,9 +26,8 @@ defmodule FslcWeb.LivestreamController do
   end
 
   def authenticate(conn, params) do
-    from(stream in Fslc.Livestream, where: stream.expiration < fragment("now()"))
-    |> Repo.delete_all
-
+    delete_old_streams()
+    
     exists = from(user_stream in Fslc.Livestream, where: (user_stream.expiration >= fragment("now()") and user_stream.hash == ^params["hash"]), select: user_stream)
     |> Repo.delete_all
     |> elem(0)
