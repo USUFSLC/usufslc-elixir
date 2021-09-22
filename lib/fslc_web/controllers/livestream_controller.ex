@@ -26,8 +26,6 @@ defmodule FslcWeb.LivestreamController do
     |> Repo.delete_all
     |> elem(0)
 
-    IO.puts(exists)
-
     if exists > 0 do
       conn
       |> put_status(:ok)
