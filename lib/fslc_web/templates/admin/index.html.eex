@@ -1,0 +1,2 @@
+<h1> Admin Portal</h1>
+<%= link "Create Livestream", to: Routes.livestream_path(@conn, :create),  method: :post %>

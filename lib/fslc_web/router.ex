@@ -27,11 +27,17 @@ defmodule FslcWeb.Router do
     get "/stream/authenticate", LivestreamController, :authenticate
   end
 
+  scope "/admin", FslcWeb do
+    pipe_through [:browser, :require_admin_user]
+
+    get "/", AdminController, :index
+    post "/stream/start", LivestreamController, :create
+  end
+
   scope "/stream", FslcWeb do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/", LivestreamController, :index
-    post "/start", LivestreamController, :create
   end
 
   # Other scopes may use custom stacks.

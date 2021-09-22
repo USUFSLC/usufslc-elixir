@@ -21,12 +21,13 @@
             <%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %>
             <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %>
             <%= if is_admin?(@current_user) do %>
-              <%= link "Stream", to: Routes.livestream_path(@conn, :create), method: :post %>
+              <%= link "Admin", to: Routes.admin_path(@conn, :index) %>
             <% end %>
           <% else %>
             <%= link "Register", to: Routes.user_registration_path(@conn, :new) %>
             <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
           <% end %>
+          <%= link "Stream", to: Routes.livestream_path(@conn, :index) %>
         </div>
       </header>
       <main role="main">
