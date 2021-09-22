@@ -10,7 +10,7 @@ defmodule Fslc.Repo.Migrations.CreateUsersAuthTables do
       add :hashed_password, :string, null: false
       add :confirmed_at, :naive_datetime
 
-      add :role_id, references(:account_roles)
+      add :role_id, references(:account_roles), default: 1
       timestamps()
     end
 

@@ -39,7 +39,9 @@ defmodule FslcWeb do
 
       # Include shared imports and aliases for views
       unquote(view_helpers())
+      import FslcWeb.Helpers.Authorize
     end
+
   end
 
   def router do
@@ -68,6 +70,7 @@ defmodule FslcWeb do
 
       import FslcWeb.ErrorHelpers
       import FslcWeb.Gettext
+
       alias FslcWeb.Router.Helpers, as: Routes
     end
   end

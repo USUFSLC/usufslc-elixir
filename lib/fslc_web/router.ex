@@ -22,6 +22,15 @@ defmodule FslcWeb.Router do
     get "/", PageController, :index
     get "/license", PageController, :license
     get "/disclaimer", PageController, :disclaimer
+
+    get "/stream/authenticate", LivestreamController, :authenticate
+  end
+
+  scope "/stream", FslcWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/", LivestreamController, :index
+    post "/start", LivestreamController, :create
   end
 
   # Other scopes may use custom stacks.
