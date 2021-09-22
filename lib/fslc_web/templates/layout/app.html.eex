@@ -49,6 +49,7 @@
       <div class="push"></div>
     </div>
     <footer>
+      <a href="<%= Routes.page_path(@conn, :credits) %>">Credits</a>
       <a href="<%= Routes.page_path(@conn, :license) %>">License</a>
       <a href="<%= Routes.page_path(@conn, :disclaimer) %>">Disclaimer</a>
     </footer>

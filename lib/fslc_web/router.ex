@@ -22,6 +22,7 @@ defmodule FslcWeb.Router do
     get "/", PageController, :index
     get "/license", PageController, :license
     get "/disclaimer", PageController, :disclaimer
+    get "/credits", PageController, :credits
 
     get "/stream/authenticate", LivestreamController, :authenticate
   end

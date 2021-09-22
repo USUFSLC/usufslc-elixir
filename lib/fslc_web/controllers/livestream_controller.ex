@@ -28,15 +28,15 @@ defmodule FslcWeb.LivestreamController do
 
     IO.puts(exists)
 
-    if !!exists do
-      conn
-      |> put_status(:unauthorized)
-      |> put_flash(:error, "Unauthorized")
-      |> render("index.html")
-    else
+    if exists > 0 do
       conn
       |> put_status(:ok)
       |> put_flash(:info, "Authenticated to stream")
+      |> render("index.html")
+    else
+      conn
+      |> put_status(:unauthorized)
+      |> put_flash(:error, "Unauthorized")
       |> render("index.html")
     end
   end

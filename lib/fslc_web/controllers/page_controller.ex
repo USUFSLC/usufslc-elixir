@@ -13,4 +13,8 @@ defmodule FslcWeb.PageController do
     render(conn, "disclaimer.html")
   end
 
+  def credits(conn, _params) do
+    render(conn, "credits.html")
+  end
+
 end
