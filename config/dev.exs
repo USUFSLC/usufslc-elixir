@@ -15,20 +15,14 @@ config :fslc, Fslc.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
+
+killzombies = Path.expand("../kill-hanging-watch-processes.sh", __DIR__)
+
 config :fslc, FslcWeb.Endpoint,
   http: [port: System.get_env("HTTP_PORT") || 4000],
   debug_errors: true,
   code_reloader: true,
-  check_origin: false,
-  watchers: [
-    node: [
-      "node_modules/webpack/bin/webpack.js",
-      "--mode",
-      "development",
-      "--watch-stdin",
-      cd: Path.expand("../assets", __DIR__)
-    ]
-  ]
+  check_origin: false
 
 # Watch static and templates for browser reloading.
 config :fslc, FslcWeb.Endpoint,

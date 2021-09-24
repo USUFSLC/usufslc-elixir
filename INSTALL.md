@@ -5,7 +5,7 @@
 ```
 cd ~
 sudo pacman -Syu
-sudo pacman -S postgresql erlang elixir openssl python inotify-tools git npm6 nodejs-lts-fermium
+sudo pacman -S postgresql erlang elixir python git make
 ```
 
 ### Configure postgresql
@@ -16,58 +16,10 @@ sudo su
 su postgres -c "initdb --locale=en_US.UTF-8 -E UTF8 -D /var/lib/postgres/data"
 ```
 
-* Generate a password and save it (make sure to delete afterwards)
-
-```
-postgresql_password="$(openssl rand -base64 10)"
-echo "$postgresql_password" > password.txt
-```
-
-* Allow only local connections without a password so that we can set the password for the postgres user
-
-```
-echo "
-local all all              trust
-host  all all 127.0.0.1/32 trust
-host  all all ::1/128      trust
-" > /var/lib/postgres/data/pg_hba.conf
-```
-
-* Set password encryption mode
-
-```
-echo "
-password_encryption = scram-sha-256
-" >> /var/lib/postgres/data/postgresql.conf
-```
-
-
 * Add postgresql to boot via soy-stemd
 
 ```
 systemctl enable postgresql
-systemctl restart postgresql
-```
-
-* Add postgres password for logging into db
-
-```
-su - postgres -c "psql -c \"alter user postgres with encrypted password '$postgresql_password'\""
-```
-
-* Now we can change the configuration to only allow hashed passwords from local connections
-
-```
-echo "
-local all all               scram-sha-256
-host  all all 127.0.0.1/32  scram-sha-256
-host  all all ::1/128       scram-sha-256
-" > /var/lib/postgres/data/pg_hba.conf
-```
-
-* Restart the postgresql service
-
-```
 systemctl restart postgresql
 ```
 
@@ -98,18 +50,21 @@ cd fslc-website
 * Get dependencies
 ```
 mix deps.get
-cd assets && npm -ci && node node_modules/webpack/bin/webpack.js --mode development
+cd assets && make all
 mix deps.compile
 ```
+
+* Ask Logan for a sendgrid api key if you want to send emails
 
 * Configure your .env
 
 ```
 echo "
 POSTGRES_USER=postgres
-POSTGRES_PASS=$postgresql_password
 POSTGRES_HOSTNAME=localhost
 HTTP_PORT=4000
+
+SENDGRID_API_KEY=ajsdkfalsdjflaksdlfkjaldfj
 " > .env
 ```
 
@@ -129,10 +84,4 @@ mix ecto.migrate
 
 ```
 bash start_dev_server.sh
-```
-
-### Delete the postgresql password.txt file we made earlier
-
-```
-rm ~/password.txt
 ```
