@@ -1,7 +1,7 @@
-FROM elixir:1.12.2-alpine AS build
+FROM elixir:1.12.3-alpine AS build
 
 # install build dependencies
-RUN apk add --no-cache build-base git python3
+RUN apk add --no-cache build-base git python3 npm
 
 # prepare build dir
 WORKDIR /app
@@ -23,7 +23,9 @@ RUN npm install -g sass esbuild
 
 COPY priv priv
 COPY assets assets
-RUN cd assets && make all && cd ..
+WORKDIR /app/assets
+RUN make all
+WORKDIR /app
 RUN mix phx.digest
 
 # compile and build release
