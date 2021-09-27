@@ -18,7 +18,7 @@ h1 {
   color: $purpleish;
 }
 
-input, select{
+input[type=text], select{
   font-family: Ubuntu;
   color: $turquoise;
   border-bottom: 1px solid green;

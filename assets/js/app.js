@@ -1,14 +1,5 @@
-// webpack automatically bundles all modules in your
-// entry points. Those entry points can be configured
-// in "webpack.config.js".
-//
-// Import deps with the dep name or local files with a relative path, for example:
-//
-//     import {Socket} from "phoenix"
-//     import socket from "./socket"
-//
-import "./phoenix"
-import "../../deps/phoenix_html/priv/static/phoenix_html"
-
 import $ from "./jquery-min"
 window.$ = window.jQuery = $
+
+import "../../deps/phoenix/priv/static/phoenix"
+import "../../deps/phoenix_html/priv/static/phoenix_html"

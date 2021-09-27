@@ -1,0 +1,21 @@
+<h1>Announcements</h1>
+
+<%= link "Back", to: Routes.admin_path(@conn, :index) %>
+<%= link "Create", to: Routes.announcement_path(@conn, :new) %>
+
+<%= if Enum.count(@announcements) == 0 do %>
+<p>No Announcements</p>
+<% end %>
+
+<%= for announcement <- @announcements do %>
+<hr>
+<h2><%= announcement.announcement_name %></h2>
+<p>Publish Date: <%= announcement.publish_date |> NaiveDateTime.to_string() %></p>
+<p>
+  Description
+  <br>
+  <%= announcement.description %>
+</p>
+<%= link "Edit", to: Routes.announcement_path(@conn, :edit, announcement) %>
+<%= link "Delete", to: Routes.announcement_path(@conn, :delete, announcement), method: :delete %>
+<% end %>

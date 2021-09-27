@@ -32,6 +32,9 @@ defmodule FslcWeb.Router do
 
     get "/", AdminController, :index
     post "/stream/start", LivestreamController, :create
+
+  	resources "/announcements", AnnouncementController
+
   end
 
   scope "/stream", FslcWeb do

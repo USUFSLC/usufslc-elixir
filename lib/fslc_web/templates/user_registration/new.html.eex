@@ -38,9 +38,6 @@
     <%= error_tag f, :password %>
   </p>
 
-
-
-
   <div>
     <%= submit "Register" %>
   </div>

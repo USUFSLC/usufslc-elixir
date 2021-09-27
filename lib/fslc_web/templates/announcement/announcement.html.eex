@@ -1,0 +1,5 @@
+<h1><%= @announcement.announcement_name %></h1>
+<h3>Publish on: <%= @announcement.publish_date |> NaiveDateTime.to_string() %></h3>
+<p>Description</p>
+<hr>
+<p><%= @announcement.description %></p>

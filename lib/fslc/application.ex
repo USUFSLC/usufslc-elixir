@@ -13,8 +13,10 @@ defmodule Fslc.Application do
       FslcWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Fslc.PubSub},
+      # Start the announcement updater for discord
+      Fslc.AnnouncementUpdater,
       # Start the Endpoint (http/https)
-      FslcWeb.Endpoint
+      FslcWeb.Endpoint,
       # Start a worker by calling: Fslc.Worker.start_link(arg)
       # {Fslc.Worker, arg}
     ]

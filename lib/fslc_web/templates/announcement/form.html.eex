@@ -1,0 +1,55 @@
+
+<%= link "Back", to: Routes.announcement_path(@conn, :index) %>
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<%= form_for @changeset, @action, fn f -> %>
+  <p><span class="prompt"></span> <span class="command">printf "Announcement Name >" && read announcement_name</span></p>
+  <p>
+    Announcement Name >
+    <%= text_input f, :announcement_name, required: false %>
+    <br>
+    <%= error_tag f, :announcement_name %>
+  </p>
+
+  <p><span class="prompt"></span> <span class="command">printf "Announcement Description >" && read announcement_description</span></p>
+  <p>
+    Announcement Description >
+  </p>
+  <p>
+    <%= textarea f, :description, required: true, cols: 35, rows: 5 %>
+    <br>
+    <%= error_tag f, :description %>
+  </p>
+
+  <p><span class="prompt"></span> <span class="command">printf "Publish Date (MST)>" && read publish_date</span></p>
+  <p>
+    Publish Date (MST)>
+    <%= text_input f, :publish_date, required: true, id: "picker" %>
+    <br>
+    <%= error_tag f, :publish_date %>
+  </p>
+
+  <div>
+    <%= submit "Submit" %>
+  </div>
+  <br>
+<% end %>
+
+<script>
+
+const TIME_DELTA = -6; // For MST
+
+$(document).ready(() => {
+  let currentTime = new Date();
+  currentTime.setTime(currentTime.getTime() + TIME_DELTA*60*1000);
+
+  flatpickr("#picker", {
+    altInput: true,
+    altFormat: "F j, Y H:i",
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    time_24hr: true
+  });
+})
+</script>
