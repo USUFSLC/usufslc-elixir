@@ -18,7 +18,7 @@ h1 {
   color: $purpleish;
 }
 
-input[type=text], select{
+input[type=text], input[type=password], input[type=number], input[type=email], textarea, select{
   font-family: Ubuntu;
   color: $turquoise;
   border-bottom: 1px solid green;

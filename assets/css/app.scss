@@ -53,7 +53,8 @@ main {
   max-width: 900px;
   padding-left: 5px;
   padding-right: 5px;
-  maring: auto;
+  margin: auto;
+  text-align: left;
 }
 @media screen and (max-width: 800px) {
   .content-container {

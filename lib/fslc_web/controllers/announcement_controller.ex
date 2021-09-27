@@ -32,7 +32,7 @@ defmodule FslcWeb.AnnouncementController do
   end
 
   def delete(conn, %{"id" => id}) do
-    announcement = (from x in Announcement, where: x.id == ^id, select: x)
+    (from x in Announcement, where: x.id == ^id, select: x)
     |> Repo.delete_all
 
     conn
