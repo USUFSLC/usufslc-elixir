@@ -16,6 +16,7 @@
   <br>
   <%= if (String.length(announcement.description) > 100), do: String.slice(announcement.description, 0..100) <> "...", else: announcement.description %>
 </p>
+<%= link "View", to: Routes.announcement_path(@conn, :show, announcement) %>
 <%= link "Edit", to: Routes.announcement_path(@conn, :edit, announcement) %>
 <%= link "Delete", to: Routes.announcement_path(@conn, :delete, announcement), method: :delete %>
 <% end %>
