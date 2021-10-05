@@ -1,8 +1,8 @@
 <h1> Admin Portal</h1>
 
 <h2>Livestreams</h2>
-<%= link "Create Livestream", to: Routes.livestream_path(@conn, :create),  method: :post %>
+<%= link "Create", to: Routes.livestream_path(@conn, :create),  method: :post %>
 
 <h2>Announcements</h2>
-<%= link "Announcements", to: Routes.announcement_path(@conn, :index) %>
+<%= link "List", to: Routes.announcement_path(@conn, :index) %>
 <%= link "Create", to: Routes.announcement_path(@conn, :new) %>
