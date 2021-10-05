@@ -8,8 +8,6 @@ defmodule FslcWeb.AnnouncementController do
     announcements = (from a in Announcement, select: a, order_by: a.publish_date)
     |> Repo.all
 
-    IO.puts(inspect(announcements))
-
     render(conn, "index.html", announcements: announcements)
   end
 

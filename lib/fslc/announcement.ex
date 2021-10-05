@@ -4,7 +4,7 @@ defmodule Fslc.Announcement do
 
   schema "announcements" do
     field :announcement_name, :string, size: 40
-    field :description, :string, size: 1000
+    field :description, :string, size: 5000
     field :publish_date, :naive_datetime
   end
 
@@ -12,6 +12,7 @@ defmodule Fslc.Announcement do
   def changeset(role, attrs \\ %{}) do
     role
     |> cast(attrs, [:announcement_name, :description, :publish_date])
+    |> validate_length(:description, max: 5000)
     |> validate_required([:description, :publish_date])
   end
 end
