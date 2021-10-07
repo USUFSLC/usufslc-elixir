@@ -20,7 +20,7 @@ services:
     depends_on:
       - 'db'
   db:
-    image: 'postgres:latest'
+    image: 'postgres:13'
     networks:
       static:
         ipv4_address: 172.22.0.100
