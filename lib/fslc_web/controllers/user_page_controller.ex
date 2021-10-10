@@ -3,7 +3,6 @@ defmodule FslcWeb.UserPageController do
   alias Fslc.Accounts.UserNotifier
   alias Fslc.Repo
   use FslcWeb, :controller
-  import Ecto.Query
 
   def index(conn, _params) do
     {status, static_user_pages} = File.ls("users")

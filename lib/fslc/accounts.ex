@@ -383,7 +383,7 @@ defmodule Fslc.Accounts do
   end
 
   def get_page_token_by_token_string(token) do
-    result = (from x in UserPageToken, where: x.token == ^token, select: x) 
+    (from x in UserPageToken, where: x.token == ^token, select: x) 
     |> Repo.one()
     |> Repo.preload(:user)
   end
