@@ -5,7 +5,7 @@ defmodule Fslc.Accounts do
 
   import Ecto.Query, warn: false
   alias Fslc.Repo
-  alias Fslc.Accounts.{User, UserToken, UserNotifier}
+  alias Fslc.Accounts.{User, UserToken, UserNotifier, UserPageToken}
 
   ## Database getters
 
@@ -23,6 +23,20 @@ defmodule Fslc.Accounts do
   """
   def get_user_by_email(email) when is_binary(email) do
     Repo.get_by(User, email: email)
+  end
+
+  @doc """
+  Gets a user by username.
+
+  ## Examples
+      iex> get_user_by_username("username")
+      %User{}
+
+      iex> get_user_by_username("doesnotexist")
+      nil
+  """
+  def get_user_by_username(username) when is_binary(username) do
+    Repo.get_by(User, username: username)
   end
 
   @doc """
@@ -360,5 +374,17 @@ defmodule Fslc.Accounts do
       {:ok, %{user: user}} -> {:ok, user}
       {:error, :user, changeset, _} -> {:error, changeset}
     end
+  end
+
+  def create_user_page_token(attrs) do
+    %UserPageToken{}
+    |> UserPageToken.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def get_page_token_by_token_string(token) do
+    result = (from x in UserPageToken, where: x.token == ^token, select: x) 
+    |> Repo.one()
+    |> Repo.preload(:user)
   end
 end

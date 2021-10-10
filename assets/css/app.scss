@@ -72,12 +72,16 @@ footer {
 }
 
 .alert {
-  text-align: left;
+  border-radius: 5px;
+  padding: 10px;
+  border: 2px solid $green;
 }
 
 .alert-danger {
   color: $error-red;
-  font-size: 1.1em;
+  border-radius: 5px;
+  padding: 10px;
+  border: 2px solid $error-red;
 }
 .invalid-feedback  {
   color: $error-red;

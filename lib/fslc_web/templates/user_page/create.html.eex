@@ -1,0 +1,7 @@
+<h1>Send User Page Token</h1>
+
+<p>Username:</p>
+<%= form_for @conn, Routes.user_page_path(@conn, :submit_user_page_confirm), [as: :data], fn f -> %>
+  <%= text_input f, :for %>
+  <%= submit "Send" %>
+<% end %>

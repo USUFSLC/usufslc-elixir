@@ -18,9 +18,22 @@
         </div>
         <div class="header-right">
           <%= link "Home", to: Routes.page_path(@conn, :index) %>
+          <div class="dropdown">
+            <a href="javascript:void(0)">More</a>
+            <div class="dropdown-content">
+              <%= link "User Pages", to: Routes.user_page_path(@conn, :index) %>
+              <%= link "Stream", to: Routes.livestream_path(@conn, :index) %>
+              <%= link "Tilde", to: "http://fslc.club" %>
+            </div>
+          </div> 
           <%= if @current_user do %>
-            <%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %>
-            <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %>
+            <div class="dropdown">
+              <a href="javascript:void(0)">User</a>
+              <div class="dropdown-content">
+                <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %>
+                <%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %>
+              </div>
+            </div> 
             <%= if is_admin?(@current_user) do %>
               <%= link "Admin", to: Routes.admin_path(@conn, :index) %>
             <% end %>
@@ -28,7 +41,6 @@
             <%= link "Register", to: Routes.user_registration_path(@conn, :new) %>
             <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
           <% end %>
-          <%= link "Stream", to: Routes.livestream_path(@conn, :index) %>
         </div>
       </header>
       <main role="main">
@@ -51,6 +63,7 @@
       <div class="push"></div>
     </div>
     <footer>
+      <a href="<%= Routes.page_path(@conn, :guidelines) %>">Guidelines</a>
       <a href="<%= Routes.page_path(@conn, :credits) %>">Credits</a>
       <a href="<%= Routes.page_path(@conn, :license) %>">License</a>
       <a href="<%= Routes.page_path(@conn, :disclaimer) %>">Disclaimer</a>

@@ -1,0 +1,9 @@
+<h1>User page request for <%= @username %></h1>
+
+<p>
+You are receiving this email because you recently added a <a href="<%= @pr_link %>">pull request</a> to submit a user page, and an administrator wants to confirm it is associated with this user.
+<br>
+Your token is: "<%= @token %>".
+<br>
+Please place this token in a comment on your PR in GitHub and a maintainer will merge the branch if it follows <a href="<%= @guidelines_link %>">our guidelines</a>
+</p>

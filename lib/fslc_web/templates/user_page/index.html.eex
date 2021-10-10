@@ -1,0 +1,6 @@
+<h1>User Pages</h1>
+<div class="user-div">
+<%= for user <- @users do %>
+  <span class="user-link"><%= link user, to: Routes.user_page_path(@conn, :user, user) %></span>
+<% end %>
+</div>

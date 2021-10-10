@@ -23,8 +23,12 @@ defmodule FslcWeb.Router do
     get "/license", PageController, :license
     get "/disclaimer", PageController, :disclaimer
     get "/credits", PageController, :credits
+    get "/guidelines", PageController, :guidelines
 
     get "/stream/authenticate", LivestreamController, :authenticate
+
+    get "/users/pages", UserPageController, :index
+    get "/users/pages/:username", UserPageController, :user
   end
 
   scope "/admin", FslcWeb do
@@ -32,9 +36,12 @@ defmodule FslcWeb.Router do
 
     get "/", AdminController, :index
     post "/stream/start", LivestreamController, :create
-
   	resources "/announcements", AnnouncementController
 
+    get "/user-page-tokens/validate", UserPageController, :validate_user_page_form
+    post "/user-page-tokens/validate", UserPageController, :validate_user_page_confirm
+    get "/user-page-tokens/create", UserPageController, :create_user_token
+    post "/user-page-tokens/submit", UserPageController, :submit_user_page_confirm
   end
 
   scope "/stream", FslcWeb do

@@ -6,3 +6,8 @@
 <h2>Announcements</h2>
 <%= link "List", to: Routes.announcement_path(@conn, :index) %>
 <%= link "Create", to: Routes.announcement_path(@conn, :new) %>
+
+<h2>User Pages</h2>
+<%= link "Create Token", to: Routes.user_page_path(@conn, :create_user_token) %>
+<%= link "Validate Token", to: Routes.user_page_path(@conn, :validate_user_page_form) %>
+

@@ -17,4 +17,7 @@ defmodule FslcWeb.PageController do
     render(conn, "credits.html")
   end
 
+  def guidelines(conn, _params) do
+    render(conn, "guidelines.html")
+  end
 end

@@ -1,0 +1,8 @@
+<h1>Validate a user token</h1>
+<%= link "Back", to: Routes.admin_path(@conn, :index) %>
+
+<h4>Enter a token from a Pull Request</h4>
+<%= form_for @conn, Routes.user_page_path(@conn, :validate_user_page_confirm), fn data -> %>
+  <%= text_input data, :token%>
+  <%= submit "Search" %>
+<% end %>

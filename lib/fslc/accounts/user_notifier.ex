@@ -36,4 +36,18 @@ defmodule Fslc.Accounts.UserNotifier do
     |> render_body("update_email.html", %{user: user, link: url})
     |> Mailer.deliver()
   end
+
+  @doc """
+  Deliver an email to confirm user wants to add a page
+  """
+  def deliver_user_confirm_page_instructions(user, token, pr_link, guidelines_link) do
+    new_info_email(user, "New User Page For #{user.username}")
+    |> render_body("authorize_user_page.html", %{
+         username: user.username,
+         pr_link: pr_link,
+         token: token,
+         guidelines_link: guidelines_link
+       })
+    |> Mailer.deliver()
+  end
 end
