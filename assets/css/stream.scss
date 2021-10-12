@@ -1,0 +1,39 @@
+.mentioned {
+  background-color: $dark-blue;
+}
+
+.username {
+  color: $muted-pink;
+}
+
+.chat-entry {
+  display: block;
+  margin: 0;
+}
+
+.livestream-container {
+  display: flex;
+  align-items: stretch;
+}
+
+.livestream-video {
+  flex: 3;
+}
+
+.livestream-chat {
+  flex: 1;
+}
+.livestream-chat-box {
+  overflow-y: scroll;
+  max-height: 300px;
+}
+
+@media only screen and (max-width: 700px) {
+  .livestream-container {
+    display: block;
+  }
+
+  .livestream-chat-box {
+    max-height: 200px;
+  }
+}
