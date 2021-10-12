@@ -6,26 +6,49 @@
 
 <a href="/livestream/archive">Archived Recordings</a>
 
-<div style="text-align: center">
-  <video
-    id="my-video"
-    class="video-js vjs-16-9"
-    controls
-    preload="auto"
-    style="width: 100%"
-    data-setup="{}"
-    autoplay
-    muted
-  >
-    <source src="https://usufslc.com/livestream/live/show.m3u8" type="application/x-mpegURL" />
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that
-      <a href="https://videojs.com/html5-video-support/" target="_blank"
-        >supports HTML5 video</a
-      >
-    </p>
-  </video>
-  <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
+<div class="livestream-container">
+  <div style="text-align: center" class="livestream-video">
+    <video
+      id="my-video"
+      class="video-js vjs-16-9"
+      controls
+      preload="auto"
+      style="width: 100%"
+      data-setup="{}"
+      autoplay
+      muted
+    >
+      <source src="https://usufslc.com/livestream/live/show.m3u8" type="application/x-mpegURL" />
+      <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a
+        web browser that
+        <a href="https://videojs.com/html5-video-support/" target="_blank"
+          >supports HTML5 video</a
+        >
+      </p>
+    </video>
+    <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
+  </div>
+  <div class="livestream-chat">
+    <hr>
+    <h3>Chat</h3>
+    <div class="livestream-chat-box" id="chat-box">
+      <%= for chat <- @chats do%>
+        <p class="chat-entry"><span class="username"><%= chat.user.username %></span>: <%= chat.content %></p>
+      <% end %>
+    </div>
+
+    <hr>
+
+    <form id="chat-form">
+      <textarea placeholder="Your comment" id="user-msg" cols="35"></textarea>
+      <br>
+      <br>
+      <button type="submit">Post</button>
+    </form>
+  </div>
 </div>
-<br>
+
+<script>
+  StreamChat.init(socket)
+</script>

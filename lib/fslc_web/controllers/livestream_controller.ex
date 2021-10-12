@@ -1,5 +1,6 @@
 defmodule FslcWeb.LivestreamController do
   alias Fslc.Repo
+  alias Fslc.Message
   import Ecto.Query
   import Plug.Conn
   use FslcWeb, :controller
@@ -12,7 +13,7 @@ defmodule FslcWeb.LivestreamController do
   def index(conn, _params) do
     conn
     |> put_flash(:info, "NOTICE: Your stream is most likely muted when autoplaying.")
-    |> render("index.html")
+    |> render("index.html", chats: Message.list_by_earliest())
   end
 
   def create(conn, _params) do
