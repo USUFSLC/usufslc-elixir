@@ -37,12 +37,12 @@ defmodule FslcWeb.LivestreamController do
       conn
       |> put_status(:ok)
       |> put_flash(:info, "Authenticated to stream")
-      |> render("index.html")
+      |> render("index.html", chats: Message.list_by_earliest() )
     else
       conn
       |> put_status(:unauthorized)
       |> put_flash(:error, "Unauthorized")
-      |> render("index.html")
+      |> render("index.html", chats: Message.list_by_earliest())
     end
   end
 end
