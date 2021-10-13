@@ -4,7 +4,7 @@ defmodule FslcWeb.StreamChatChannel do
   alias Fslc.Repo
 
   @impl true
-  def join("stream_chat:lobby", payload, socket) do
+  def join("stream_chat:lobby", _payload, socket) do
     {:ok, socket}
   end
 
@@ -24,7 +24,7 @@ defmodule FslcWeb.StreamChatChannel do
   def handle_in("send", payload, socket) do
     if String.length(payload["body"]) != 0 do
       IO.puts(String.length(payload["body"]))
-      message = %Message{ content: payload["body"] } 
+      message = %Message{ content: payload["body"] }
       |> Ecto.Changeset.change()
       |> Ecto.Changeset.put_assoc(:user, socket.assigns.user)
       |> Repo.insert!()
