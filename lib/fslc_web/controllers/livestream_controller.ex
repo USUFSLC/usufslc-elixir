@@ -23,12 +23,12 @@ defmodule FslcWeb.LivestreamController do
     Repo.insert!(livestream)
     conn
     |> put_flash(:info, "Stream key (valid for 60 seconds): " <> livestream.hash)
-    |> render("index.html")
+    |> render("index.html", chats: Message.list_by_earliest())
   end
 
   def authenticate(conn, params) do
     delete_old_streams()
-    
+
     exists = from(user_stream in Fslc.Livestream, where: (user_stream.expiration >= fragment("now()") and user_stream.hash == ^params["hash"]), select: user_stream)
     |> Repo.delete_all
     |> elem(0)
