@@ -3,8 +3,8 @@ defmodule Fslc.Announcement do
   import Ecto.Changeset
 
   schema "announcements" do
-    field :announcement_name, :string, size: 40
-    field :description, :string, size: 5000
+    field :announcement_name, :string, size: 120
+    field :description, :string, size: 10000
     field :publish_date, :naive_datetime
   end
 
@@ -12,7 +12,7 @@ defmodule Fslc.Announcement do
   def changeset(role, attrs \\ %{}) do
     role
     |> cast(attrs, [:announcement_name, :description, :publish_date])
-    |> validate_length(:description, max: 5000)
+    |> validate_length(:description, max: 10000)
     |> validate_required([:description, :publish_date])
   end
 end
