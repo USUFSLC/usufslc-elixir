@@ -30,3 +30,9 @@
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
+
+@media only screen and (max-width: 720px) {
+  .dropdown-content {
+    left: 0px;
+  }
+}

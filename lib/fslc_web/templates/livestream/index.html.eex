@@ -33,9 +33,6 @@
     <hr>
     <h3>Chat</h3>
     <div class="livestream-chat-box" id="chat-box">
-      <%= for chat <- @chats do%>
-        <p class="chat-entry"><span class="username"><%= chat.user.username %></span>: <%= chat.content %></p>
-      <% end %>
     </div>
 
     <hr>
@@ -48,7 +45,14 @@
     </form>
   </div>
 </div>
+<br>
 
 <script>
+  socket.connect()
   StreamChat.init(socket)
+
+  <%= for chat <- @chats do%>
+    StreamChat.addMessage("<%=chat.user.username%>", "<%=chat.content%>")
+  <% end %>
+  StreamChat.scrollBottom()
 </script>
