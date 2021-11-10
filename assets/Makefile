@@ -1,6 +1,6 @@
 app.css: css/app.scss
 	echo 'Building CSS...'
-	sass css/app.scss ../priv/static/css/app.css
+	sass --no-cache css/app.scss ../priv/static/css/app.css
 
 app.js: js/app.js
 	echo 'Building JS...'

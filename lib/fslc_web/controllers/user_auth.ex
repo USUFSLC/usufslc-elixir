@@ -37,8 +37,8 @@ defmodule FslcWeb.UserAuth do
       |> redirect(to: return_to || signed_in_path(conn))
     else
       conn
-      |> put_flash(:error, "This account has not been confirmed. Please check your spam.")
-      |> redirect(to: Routes.user_session_path(conn, :new))
+      |> put_flash(:error, "This account has not been confirmed. Please check your spam folder or request a new token.")
+      |> redirect(to: Routes.user_confirmation_path(conn, :new))
     end
   end
 

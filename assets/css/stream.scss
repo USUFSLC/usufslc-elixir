@@ -31,6 +31,10 @@
 }
 
 @media only screen and (max-width: 720px) {
+  .livestream-chat {
+    margin-left: 0px;
+  }
+
   .livestream-container {
     display: block;
   }
