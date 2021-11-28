@@ -16,7 +16,8 @@ config :fslc, Fslc.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 
-killzombies = Path.expand("../kill-hanging-watch-processes.sh", __DIR__)
+config :fslc, 
+  uploads_directory: System.get_env("UPLOAD_DIR") || "/tmp"
 
 config :fslc, FslcWeb.Endpoint,
   http: [port: System.get_env("HTTP_PORT") || 4000],

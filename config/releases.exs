@@ -16,6 +16,9 @@ database_url =
     For example: ecto://USER:PASS@HOST/DATABASE
     """
 
+config :fslc, 
+  uploads_directory: System.get_env("UPLOAD_DIR")
+
 config :fslc, Fslc.Repo,
   url: database_url,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")

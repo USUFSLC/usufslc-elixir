@@ -39,6 +39,14 @@ defmodule FslcWeb.Router do
 
     get "/users/pages", UserPageController, :index
     get "/users/pages/:username", UserPageController, :user
+
+    pipe_through :require_authenticated_user
+    get "/uploads/new", UploadController, :new
+    get "/uploads/:id", UploadController, :show
+    post "/uploads", UploadController, :create
+
+    pipe_through :require_admin_user
+    get "/uploads", UploadController, :index
   end
 
   scope "/admin", FslcWeb do
