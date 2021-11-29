@@ -1,0 +1,5 @@
+<h1>New Rice</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.rice_path(@conn, :create)) %>
+
+<span><%= link "Back", to: Routes.rice_path(@conn, :index) %></span>

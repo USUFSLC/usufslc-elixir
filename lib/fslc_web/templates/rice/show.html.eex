@@ -1,0 +1,28 @@
+<h1>Show Rice</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @rice.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @rice.description %>
+  </li>
+
+  <li>
+    <strong>Document:</strong>
+    <%= @rice.document_id %>
+  </li>
+
+  <li>
+    <strong>User:</strong>
+    <%= @rice.user_id %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.rice_path(@conn, :edit, @rice) %></span>
+<span><%= link "Back", to: Routes.rice_path(@conn, :index) %></span>

@@ -1,0 +1,29 @@
+<h1>Listing Rices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Document</th>
+      <th>User</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for rice <- @rices do %>
+    <tr>
+      <td><%= rice.name %></td>
+      <td><%= rice.description %></td>
+      <td>
+        <span><%= link "Show", to: Routes.rice_path(@conn, :show, rice) %></span>
+        <span><%= link "Edit", to: Routes.rice_path(@conn, :edit, rice) %></span>
+        <span><%= link "Delete", to: Routes.rice_path(@conn, :delete, rice), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Rice", to: Routes.rice_path(@conn, :new) %></span>

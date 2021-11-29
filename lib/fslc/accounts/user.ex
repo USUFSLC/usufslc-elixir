@@ -11,6 +11,7 @@ defmodule Fslc.Accounts.User do
     field :confirmed_at, :naive_datetime
 
     belongs_to :role, Fslc.Accounts.Role
+    has_many :uploads, Fslc.Documents.Upload
 
     timestamps()
   end

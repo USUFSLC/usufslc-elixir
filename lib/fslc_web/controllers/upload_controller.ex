@@ -21,13 +21,13 @@ defmodule FslcWeb.UploadController do
   end
 
   defp max_upload_count() do
-    20
+    40
   end
 
   defp can_upload(conn) do
     user = conn.assigns[:current_user]
     if !(FslcWeb.Helpers.Authorize.is_admin?(user)) do
-      user_upload_count = (from x in Upload, where: x.id == ^user.id, select: x)
+      user_upload_count = (from x in Upload, where: x.id == ^user.id, select: x, limit: max_upload_count())
       |> Repo.all()
       |> Enum.count()
 
@@ -44,7 +44,7 @@ defmodule FslcWeb.UploadController do
       |> render("new.html")
     end
     case Documents.create_upload(conn.assigns[:current_user].id, upload) do
-      {:ok, upload} ->
+      {:ok, _upload} ->
         conn
         |> put_flash(:info, "File uploaded correctly")
         |> redirect(to: Routes.upload_path(conn, :index))

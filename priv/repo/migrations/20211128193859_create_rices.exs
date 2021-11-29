@@ -1,0 +1,15 @@
+defmodule Fslc.Repo.Migrations.CreateRices do
+  use Ecto.Migration
+
+  def change do
+    create table(:rices) do
+      add :name, :string
+      add :description, :string
+      add :document_id, :integer
+      add :user_id, :integer
+
+      timestamps()
+    end
+
+  end
+end

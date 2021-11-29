@@ -5,8 +5,8 @@ defmodule Fslc.Documents do
   alias Fslc.Documents.Upload
 
   def check_size(size) do
-    if (size > 3000000) do
-      {:error, "File is too large (>3MB)"}
+    if (size > 15000000) do
+      {:error, "File is too large (>15MB)"}
     else
       :ok
     end
@@ -43,7 +43,7 @@ defmodule Fslc.Documents do
       do
         {:ok, upload}
       else
-        {:error, reason}=error -> Repo.rollback(reason)
+        {:error, reason}=_error -> Repo.rollback(reason)
       end
     end
   end

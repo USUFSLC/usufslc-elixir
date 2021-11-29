@@ -27,6 +27,16 @@ defmodule FslcWeb.Router do
   end
 
   scope "/", FslcWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/uploads/new", UploadController, :new
+    get "/uploads/:id", UploadController, :show
+    post "/uploads", UploadController, :create
+
+    resources "/rices", RiceController
+  end
+
+  scope "/", FslcWeb do
     pipe_through :browser
 
     get "/", PageController, :index
@@ -40,13 +50,7 @@ defmodule FslcWeb.Router do
     get "/users/pages", UserPageController, :index
     get "/users/pages/:username", UserPageController, :user
 
-    pipe_through :require_authenticated_user
-    get "/uploads/new", UploadController, :new
-    get "/uploads/:id", UploadController, :show
-    post "/uploads", UploadController, :create
-
-    pipe_through :require_admin_user
-    get "/uploads", UploadController, :index
+    resources "/rices", RiceController, only: [:index, :show] 
   end
 
   scope "/admin", FslcWeb do
@@ -60,6 +64,8 @@ defmodule FslcWeb.Router do
     post "/user-page-tokens/validate", UserPageController, :validate_user_page_confirm
     get "/user-page-tokens/create", UserPageController, :create_user_token
     post "/user-page-tokens/submit", UserPageController, :submit_user_page_confirm
+
+    get "/uploads", UploadController, :index
   end
 
   scope "/stream", FslcWeb do
