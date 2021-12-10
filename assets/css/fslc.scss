@@ -18,7 +18,7 @@ h1 {
   color: $purpleish;
 }
 
-input[type=text], input[type=password], input[type=number], input[type=email], textarea, select{
+input[type=text], input[type=password], input[type=number], input[type=email], textarea, select, option{
   font-family: Ubuntu;
   color: $turquoise;
   border-bottom: 1px solid green;
@@ -57,6 +57,16 @@ input:-webkit-autofill
 {
  -webkit-text-fill-color: $turquoise !important;
 }
+
+.table {
+  width: 100%;
+  overflow-x: scroll; 
+}
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.table tr:nth-child(even){background-color: lighten(#000000, 20%);}
 
 @import "userpage.scss";
 @import "stream.scss";

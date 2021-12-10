@@ -3,7 +3,7 @@
 mkdir -p ../priv/static/css
 mkdir -p ../priv/static/js
 
-hasher=$(which md5 2> /dev/null && echo "md5" || echo "md5sum")
+hasher="md5sum"
 chsum1=""
 
 while [[ true ]]

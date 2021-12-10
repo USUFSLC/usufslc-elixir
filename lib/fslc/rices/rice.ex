@@ -4,9 +4,9 @@ defmodule Fslc.Rices.Rice do
 
   schema "rices" do
     field :description, :string
-    field :document_id, :integer
     field :name, :string
-    field :user_id, :integer
+    field :document_id, :integer
+    belongs_to :user, Fslc.Accounts.User
 
     timestamps()
   end
@@ -14,7 +14,7 @@ defmodule Fslc.Rices.Rice do
   @doc false
   def changeset(rice, attrs) do
     rice
-    |> cast(attrs, [:name, :description, :document_id, :user_id])
-    |> validate_required([:name, :description, :document_id, :user_id])
+    |> cast(attrs, [:name, :description, :document_id])
+    |> validate_required([:name, :description, :document_id])
   end
 end

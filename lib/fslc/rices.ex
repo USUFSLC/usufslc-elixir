@@ -19,6 +19,11 @@ defmodule Fslc.Rices do
   """
   def list_rices do
     Repo.all(Rice)
+    |> Enum.map(fn x -> Repo.preload(x, :user) end)
+  end
+
+  def list_rices_by_user_id(user_id) do
+    Repo.all(from x in Rice, where: x.user_id == ^user_id, select: x)
   end
 
   @doc """
@@ -49,9 +54,10 @@ defmodule Fslc.Rices do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_rice(attrs \\ %{}) do
+  def create_rice(user, attrs \\ %{}) do
     %Rice{}
     |> Rice.changeset(attrs)
+    |> Ecto.Changeset.put_assoc(:user, user)
     |> Repo.insert()
   end
 

@@ -20,6 +20,7 @@ defmodule FslcWeb.Router do
     plug :put_secure_browser_headers
     plug :fetch_current_user
     plug :put_user_token
+    plug NavigationHistory.Tracker, excluded_paths: ["/login", ~r(/admin.*)]
   end
 
   pipeline :api do
@@ -29,11 +30,8 @@ defmodule FslcWeb.Router do
   scope "/", FslcWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    get "/uploads/new", UploadController, :new
-    get "/uploads/:id", UploadController, :show
-    post "/uploads", UploadController, :create
-
-    resources "/rices", RiceController
+    resources "/uploads", UploadController, only: [:new, :create, :delete, :edit, :update]
+    resources "/rices", RiceController, only: [:new, :create, :delete, :edit, :update]
   end
 
   scope "/", FslcWeb do
@@ -51,6 +49,15 @@ defmodule FslcWeb.Router do
     get "/users/pages/:username", UserPageController, :user
 
     resources "/rices", RiceController, only: [:index, :show] 
+    resources "/uploads", UploadController, only: [:index, :show]
+  end
+
+
+  scope "/stream", FslcWeb do
+    # Has its own scope because nginx does some stuff on this route
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/", LivestreamController, :index
   end
 
   scope "/admin", FslcWeb do
@@ -68,11 +75,6 @@ defmodule FslcWeb.Router do
     get "/uploads", UploadController, :index
   end
 
-  scope "/stream", FslcWeb do
-    pipe_through [:browser, :require_authenticated_user]
-
-    get "/", LivestreamController, :index
-  end
 
   # Other scopes may use custom stacks.
   # scope "/api", FslcWeb do

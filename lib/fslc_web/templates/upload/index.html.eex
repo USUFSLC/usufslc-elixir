@@ -1,23 +1,29 @@
+<h1>Uploads</h1>
+<p><%= link "New Upload", to: Routes.upload_path(@conn, :new) %></p>
 <table class="table">
   <thead>
     <th>ID</th>
     <th>Filename</th>
     <th>Type</th>
     <th>Time</th>
-    <th>Hash</th>
-    <th>Download</th>
+    <%= if is_admin?(@conn.assigns[:current_user]) do %>
+      <th>User</th>
+    <% end%>
+    <th>Action</th>
   </thead>
   <tbody>
-		
     <%= for upload <- @uploads do %>
       <tr>
         <td><%= upload.id %></td>
         <td><%= upload.filename %></td>
         <td><%= upload.content_type %></td>
         <td><%= upload.inserted_at %></td>
-        <td><%= upload.hash %></td>
+        <%= if is_admin?(@conn.assigns[:current_user]) do %>
+          <td><%= upload.user.email %><br><%= upload.user.username %></td>
+        <% end %>
         <td>
-          <%= link "download", to: Routes.upload_path(@conn, :show, upload.id) %>
+          <%= link "Download", to: Routes.upload_path(@conn, :show, upload.id) %>
+          <%= link "Delete", to: Routes.upload_path(@conn, :delete, upload), method: :delete, data: [confirm: "Are you sure?"] %>
         </td>
       </tr>
     <% end %>

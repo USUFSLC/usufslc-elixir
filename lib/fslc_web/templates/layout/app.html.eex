@@ -31,6 +31,7 @@
           <div class="dropdown">
             <a href="javascript:void(0)">More</a>
             <div class="dropdown-content">
+              <%= link "Rices", to: Routes.rice_path(@conn, :index) %>
               <%= link "User Pages", to: Routes.user_page_path(@conn, :index) %>
               <%= link "Stream", to: Routes.livestream_path(@conn, :index) %>
               <%= link "Tilde", to: "http://fslc.club" %>
@@ -41,6 +42,7 @@
               <a href="javascript:void(0)">User</a>
               <div class="dropdown-content">
                 <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %>
+                <%= link "Uploads", to: Routes.upload_path(@conn, :index) %>
                 <%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %>
               </div>
             </div> 

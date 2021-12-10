@@ -5,23 +5,34 @@
     </div>
   <% end %>
 
-  <%= label f, :name %>
-  <%= text_input f, :name %>
-  <%= error_tag f, :name %>
 
-  <%= label f, :description %>
-  <%= text_input f, :description %>
-  <%= error_tag f, :description %>
+  <p><span class="prompt"></span> <span class="command">printf "Name >" && read rice_name</span></p>
+  <p>
+    Name >
+    <%= text_input f, :name %>
+    <%= error_tag f, :name %>
+  </p>
 
-  <%= label f, :document_id %>
-  <%= number_input f, :document_id %>
-  <%= error_tag f, :document_id %>
+  <p><span class="prompt"></span> <span class="command">printf "Description >" && read rice_description</span></p>
+  <p>
+    Description >
+    <br><br>
+    <%= textarea f, :description, cols: 35, rows: 5 %>
+    <%= error_tag f, :description %>
+  </p>
 
-  <%= label f, :user_id %>
-  <%= number_input f, :user_id %>
-  <%= error_tag f, :user_id %>
+  <p><span class="prompt"></span> <span class="command">printf "Image >" && read image_path</span></p>
+  <p>
+    <%= link "Upload a new image", to: Routes.upload_path(@conn, :new), target: "_blank" %>
+    <br><br>
+    Image >
+    <br><br>
+    <%= error_tag f, :document_id %>
+    <%= select f, :document_id, Enum.map(Fslc.Documents.list_images_by_user_id(@conn.assigns[:current_user].id), fn x -> [key: x.filename, value: x.id] end) %>
+  </p>
 
   <div>
     <%= submit "Save" %>
   </div>
+  <br>
 <% end %>

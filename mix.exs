@@ -50,6 +50,7 @@ defmodule Fslc.MixProject do
       {:swoosh, "~> 1.4"},
       {:phoenix_swoosh, "~> 0.3.4"},
       {:hackney, "~> 1.17"},
+      {:navigation_history, "~> 0.4.0"}
     ]
   end
 

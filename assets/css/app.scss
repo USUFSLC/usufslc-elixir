@@ -53,6 +53,7 @@ main {
   padding-right: 5px;
   margin: auto;
   text-align: left;
+  overflow-x: scroll;
 }
 @media screen and (max-width: 800px) {
   .content-container {
@@ -83,5 +84,8 @@ footer {
 .invalid-feedback  {
   color: $error-red;
 }
-
+.click-to-maximize {
+  cursor: pointer;
+  max-width: 200px;
+}
 @import "fslc.scss";

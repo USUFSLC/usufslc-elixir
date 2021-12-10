@@ -28,7 +28,6 @@ defmodule Fslc.Documents.Upload do
     |> validate_required([:filename, :size, :content_type, :hash])
     |> validate_number(:size, greater_than: 0)
     |> validate_length(:hash, is: 64)
-    |> unique_constraint(:hash)
   end
 
   def sha256(enum_chunks) do

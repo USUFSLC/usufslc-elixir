@@ -1,3 +1,7 @@
+<h1>New Upload</h1>
+<p><%= link "My Uploads", to: Routes.upload_path(@conn, :index) %></p>
+<p>Uploads must be less than 2MB. Users can't upload more than 40 times.</p> 
+<p><span class="prompt"></span> <span class="command">cp $(head -n1 /dev/stdin) $MY-UPLOAD-DIR</span></p>
 <%= form_for @conn, Routes.upload_path(@conn, :create), 
                     [multipart: true], fn f-> %>
     <%= file_input f, :upload, class: "form-control", required: true %>

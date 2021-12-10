@@ -14,6 +14,16 @@ defmodule Fslc.Documents do
 
   def list_uploads() do
     Repo.all(Upload)
+    |> Enum.map(fn x -> Repo.preload(x, :user) end)
+  end
+
+  def list_uploads_by_user_id(user_id) do
+    Repo.all(from x in Upload, where: x.user_id == ^user_id, select: x)
+  end
+
+  def list_images_by_user_id(user_id) do
+    list_uploads_by_user_id(user_id)
+    |> Enum.filter(fn x -> is_image?(x.id) end)
   end
 
   def get_upload!(id) do
@@ -21,7 +31,19 @@ defmodule Fslc.Documents do
     |> Repo.get!(id)
   end
 
-  def create_upload(user_id, %Plug.Upload{
+  def is_image?(id) do
+    upload = Upload
+    |> Repo.get!(id)
+    String.match?(upload.content_type, ~r/image/)
+  end
+
+  def delete_upload!(id) do
+    doc = get_upload!(id)
+    File.rm!(Upload.local_path(id, doc.filename))
+    Repo.delete!(doc)
+  end
+
+  def create_upload(user, %Plug.Upload{
           filename: filename,
           path: tmp_path,
           content_type: content_type
@@ -34,7 +56,8 @@ defmodule Fslc.Documents do
         {:ok, upload} <- 
           %Upload{} |> Upload.changeset(%{
             filename: filename, content_type: content_type,
-            hash: hash, size: size, user_id: user_id }) 
+            hash: hash, size: size}) 
+          |> Ecto.Changeset.put_assoc(:user, user)
           |> Repo.insert(),
         :ok <- File.cp(
             tmp_path,

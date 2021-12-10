@@ -11,7 +11,5 @@ defmodule Fslc.Repo.Migrations.CreateUploads do
 
       timestamps()
     end
-
-    create unique_index(:uploads, [:hash])
   end
 end

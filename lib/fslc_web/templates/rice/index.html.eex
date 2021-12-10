@@ -1,29 +1,31 @@
-<h1>Listing Rices</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Document</th>
-      <th>User</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for rice <- @rices do %>
-    <tr>
-      <td><%= rice.name %></td>
-      <td><%= rice.description %></td>
-      <td>
-        <span><%= link "Show", to: Routes.rice_path(@conn, :show, rice) %></span>
-        <span><%= link "Edit", to: Routes.rice_path(@conn, :edit, rice) %></span>
-        <span><%= link "Delete", to: Routes.rice_path(@conn, :delete, rice), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+<h1>User Rices</h1>
 
 <span><%= link "New Rice", to: Routes.rice_path(@conn, :new) %></span>
+
+<%= for rice <- @rices do %>
+  <div>
+    <h2><%= rice.name %></h2>
+    <h4>By <%= rice.user.username %></h4>
+    <%= if Fslc.Documents.is_image?(rice.document_id) do %>
+      <img src="<%= Routes.upload_path(@conn, :show, rice.document_id) %>" class="click-to-maximize">
+    <% end %>
+    <p><%= rice.description %><p>
+    <%= if !is_nil(@conn.assigns[:current_user]) && (is_admin?(@conn.assigns[:current_user]) || rice.user.id == @conn.assigns[:current_user].id) do %>
+      <span><%= link "Edit", to: Routes.rice_path(@conn, :edit, rice) %></span>
+      <span><%= link "Delete", to: Routes.rice_path(@conn, :delete, rice), method: :delete, data: [confirm: "Are you sure?"] %></span>
+    <% end %>
+  </div>
+  <hr>
+<% end %>
+<script>
+let normal_width = "200px";
+let max_width = "100%";
+$(".click-to-maximize").click(function (e) {
+  let current_width = $(this).css('max-width');
+  if (current_width == max_width) {
+    $(this).css('max-width', normal_width);
+  } else if (current_width == normal_width) {
+    $(this).css('max-width', max_width);
+  }
+})
+</script>
