@@ -12,7 +12,7 @@ defmodule FslcWeb.AnnouncementController do
   end
 
   def new(conn, _params) do
-    changeset = Announcement.changeset(%Announcement{})
+    changeset = Announcement.changeset(%Announcement{description: "Hello, @everyone..."})
     render(conn, "new.html", changeset: changeset)
   end
 
