@@ -20,7 +20,7 @@ defmodule Fslc.MixProject do
   def application do
     [
       mod: {Fslc.Application, []},
-      extra_applications: [:logger, :runtime_tools, :ssl, :inets]
+      extra_applications: [:logger, :runtime_tools, :ssl, :inets, :plug]
     ]
   end
 
