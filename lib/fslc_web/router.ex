@@ -30,8 +30,10 @@ defmodule FslcWeb.Router do
   scope "/", FslcWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    resources "/uploads", UploadController, only: [:new, :create, :delete, :edit, :update]
+    resources "/uploads", UploadController, only: [:index, :new, :create, :delete, :edit, :update]
     resources "/rices", RiceController, only: [:new, :create, :delete, :edit, :update]
+
+    resources "/polls", PollController, only: [:new, :create, :delete, :edit, :update] 
   end
 
   scope "/", FslcWeb do
@@ -49,7 +51,8 @@ defmodule FslcWeb.Router do
     get "/users/pages/:username", UserPageController, :user
 
     resources "/rices", RiceController, only: [:index, :show] 
-    resources "/uploads", UploadController, only: [:index, :show]
+    resources "/uploads", UploadController, only: [:show]
+    resources "/polls", PollController, only: [:index, :show] 
   end
 
 

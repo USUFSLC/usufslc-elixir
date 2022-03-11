@@ -1,0 +1,18 @@
+<h1>Show Poll</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @poll.name %>
+  </li>
+
+  <li>
+    <strong>User:</strong>
+    <%= @poll.user_id %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.poll_path(@conn, :edit, @poll) %></span>
+<span><%= link "Back", to: Routes.poll_path(@conn, :index) %></span>

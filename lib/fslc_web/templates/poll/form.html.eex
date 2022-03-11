@@ -1,0 +1,40 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= inputs_for f, :questions, fn i -> %>
+    <div class="form-group">
+      <%= label i, :question, "Question ##{i.index + 1}" %>
+      <%= text_input i, :question %>
+      <%= if message = i.errors[:question] do %>
+        <span class="help-block"><%= message %></span>
+      <% end %>
+    </div>
+  <% end %>
+
+
+<!--
+  <div class="question-row">
+    <input name="questions[0][question]" type="text">
+  </div>
+
+  <div class="question-row">
+    <input name="questions[0][options][]" type="text">
+  </div>
+
+  <div class="question-row">
+    <input name="questions[0][options][]" type="text">
+  </div>
+
+-->
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
