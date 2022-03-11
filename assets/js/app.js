@@ -4,7 +4,7 @@ import "../../deps/dynamic_inputs_for"
 
 
 import socket from "./socket"
-import StreamChat from "./stream_chat"
-
 window.socket = socket
+
+import StreamChat from "./stream_chat"
 window.StreamChat = StreamChat

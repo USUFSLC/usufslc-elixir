@@ -1,7 +1,0 @@
-<%= form_for @changeset, @action, fn f -> %>
-  <%= dynamic_inputs_for f, :options, %Fslc.Polls.Option{}, fn f_option -> %>
-    <%= text_input f_option, :option %>
-    <%= dynamic_delete_button("Delete Option") %>
-  <% end %>
-  <%= dynamic_add_button :options, "Add Option" %>
-<% end %>

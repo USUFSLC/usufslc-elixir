@@ -13,23 +13,32 @@
   </p>
 
   <div>
-  <%= dynamic_inputs_for f, :questions, %Fslc.Polls.Question{}, fn f_question -> %>
-    <%= text_input f_question, :question %>
-    <%= dynamic_inputs_for f_question, :options, %Fslc.Polls.Option{}, fn f_option -> %>
-      <%= text_input f_option, :option %>
+  <%= inputs_for f, :questions, fn q -> %>
+    <%= text_input q, :question %>
+    <%= hidden_input q, :delete %>
 
-      <%= dynamic_delete_button("Delete Option") %>
-    <% end %>
-    <%= dynamic_add_button :options, "Add Option" %>
-
-    <%= dynamic_delete_button("Delete Question") %>
-    <hr>
+    <div>
+      <%= inputs_for q, :options, fn o -> %>
+        <%= text_input o, :option %>
+        <%= hidden_input o, :delete, class: "delete-option" %>
+        <button type="button" onclick="removeEntry($(this))">Delete</button>
+      <% end %>
+    </div>
   <% end %>
-  </div>
 
-  <%= dynamic_add_button :questions, "Add Question" %>
+  </div>
 
   <div>
     <%= submit "Save" %>
   </div>
 <% end %>
+
+<script>
+  function addNewEntry(reg, elem) {
+    // Traverse divs looking for highest id and return that +1 to add new entry
+  }
+  function removeThisEntry(elem) {
+    // Looks for nearest element with delete-option class and changes display:none for parent and
+    // sets hidden_input to true
+  }
+</script>

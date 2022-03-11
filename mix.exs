@@ -51,7 +51,6 @@ defmodule Fslc.MixProject do
       {:phoenix_swoosh, "~> 0.3.4"},
       {:hackney, "~> 1.17"},
       {:navigation_history, "~> 0.4.0"},
-      {:dynamic_inputs_for, "~> 1.1.0"}
     ]
   end
 
