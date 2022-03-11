@@ -15,7 +15,7 @@ defmodule Fslc.Polls.Poll do
   def changeset(poll, attrs) do
     poll
     |> cast(attrs, [:name])
-    |> cast_assoc(:questions)
+    |> cast_assoc(:questions, with: &Fslc.Polls.Question.changeset/2)
     |> validate_required([:name])
   end
 end

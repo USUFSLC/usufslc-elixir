@@ -15,7 +15,7 @@ defmodule FslcWeb.PollController do
   end
 
   def new(conn, _params) do
-    changeset = Polls.change_poll(%Poll{questions: [%Question{}, %Question{}]})
+    changeset = Polls.change_poll(%Poll{})
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -40,14 +40,14 @@ defmodule FslcWeb.PollController do
 
   def edit(conn, %{"id" => id}) do
     poll = Polls.get_poll!(id)
-    |> Repo.preload(:questions)
+    |> Repo.preload([questions: [:options]])
     changeset = Polls.change_poll(poll)
     render(conn, "edit.html", poll: poll, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "poll" => poll_params}) do
     poll = Polls.get_poll!(id)
-    |> Repo.preload(:questions)
+    |> Repo.preload([questions: [:options]])
 
     case Polls.update_poll(poll, poll_params) do
       {:ok, poll} ->

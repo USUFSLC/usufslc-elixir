@@ -1,39 +1,34 @@
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+      <p>Oops, something went wrong!</p>
     </div>
   <% end %>
 
-  <%= label f, :name %>
-  <%= text_input f, :name %>
-  <%= error_tag f, :name %>
+  <p><span class="prompt"></span> <span class="command">printf "Name >" && read poll_name</span></p>
+  <p>
+    Name >
+    <%= text_input f, :name %>
+    <%= error_tag f, :name %>
+  </p>
 
-  <%= inputs_for f, :questions, fn i -> %>
-    <div class="form-group">
-      <%= label i, :question, "Question ##{i.index + 1}" %>
-      <%= text_input i, :question %>
-      <%= if message = i.errors[:question] do %>
-        <span class="help-block"><%= message %></span>
-      <% end %>
-    </div>
+  <div>
+  <%= dynamic_inputs_for f, :questions, %Fslc.Polls.Question{}, fn f_question -> %>
+    <%= text_input f_question, :question %>
+    <%= dynamic_inputs_for f_question, :options, %Fslc.Polls.Option{}, fn f_option -> %>
+      <%= text_input f_option, :option %>
+
+      <%= dynamic_delete_button("Delete Option") %>
+    <% end %>
+    <%= dynamic_add_button :options, "Add Option" %>
+
+    <%= dynamic_delete_button("Delete Question") %>
+    <hr>
   <% end %>
-
-
-<!--
-  <div class="question-row">
-    <input name="questions[0][question]" type="text">
   </div>
 
-  <div class="question-row">
-    <input name="questions[0][options][]" type="text">
-  </div>
+  <%= dynamic_add_button :questions, "Add Question" %>
 
-  <div class="question-row">
-    <input name="questions[0][options][]" type="text">
-  </div>
-
--->
   <div>
     <%= submit "Save" %>
   </div>
