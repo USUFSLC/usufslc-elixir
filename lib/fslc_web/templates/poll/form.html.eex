@@ -13,32 +13,35 @@
   </p>
 
   <div>
-  <%= inputs_for f, :questions, fn q -> %>
-    <%= text_input q, :question %>
-    <%= hidden_input q, :delete %>
-
-    <div>
-      <%= inputs_for q, :options, fn o -> %>
-        <%= text_input o, :option %>
-        <%= hidden_input o, :delete, class: "delete-option" %>
-        <button type="button" onclick="removeEntry($(this))">Delete</button>
-      <% end %>
-    </div>
-  <% end %>
-
-  </div>
-
-  <div>
+    <%= inputs_for f, :questions, fn q -> %>
+      <div>
+        <%= text_input q, :question %>
+        <button type="button" onclick="removeEntry($(this))">Delete Question</button>
+        <%= hidden_input q, :delete, class: "delete-option" %>
+        <div>
+          <%= inputs_for q, :options, fn o -> %>
+            <div>
+              <%= text_input o, :option %>
+              <%= hidden_input o, :delete, class: "delete-option" %>
+              <button type="button" onclick="removeEntry($(this))">Delete Option</button>
+            </div>
+          <% end %>
+        </div>
+        <button type="button" onclick="addOption($(this))">New Option</button>
+      </div>
+      <hr>
+    <% end %>
+    <button type="button" onclick="addQuestion($(this))">New Question</button>
     <%= submit "Save" %>
   </div>
+
 <% end %>
 
 <script>
-  function addNewEntry(reg, elem) {
-    // Traverse divs looking for highest id and return that +1 to add new entry
+  function addOption(elem) {
   }
-  function removeThisEntry(elem) {
-    // Looks for nearest element with delete-option class and changes display:none for parent and
-    // sets hidden_input to true
+  function removeEntry(elem) {
+    elem.siblings('.delete-option').val('true');
+    elem.closest('div').hide();
   }
 </script>
