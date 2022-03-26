@@ -55,7 +55,7 @@
           <% end %>
         </div>
       </header>
-      <main role="main">
+      <main id="main" role="main">
         <div class="content-container">
           <%= if get_flash(@conn, :info) do %>
             <p class="alert alert-info" role="alert">
