@@ -8,7 +8,7 @@ window.socket = socket
 window.StreamChat = StreamChat
 
 import makeTrongles from "./april-fools"
-window.addTrongles = () => makeTrongles([...["cubeongle", "pentongle", "quadrongle", "trapezongle", "trongle", "trongHandsome", "trongYeah", "trongPoly", "trongFem", "trongAngry", "LegTrong2", "trongPants2", "trongPants"].map((x) => `/images/rongles/${x}.png`), "/images/rongles/tronglePat.gif"]);
+window.addTrongles = () => makeTrongles([...["doritongle", "tuxongle", "cubeongle", "pentongle", "quadrongle", "trapezongle", "trongle", "trongHandsome", "trongYeah", "trongPoly", "trongFem", "trongAngry", "LegTrong2", "trongPants2", "trongPants"].map((x) => `/images/rongles/${x}.png`), "/images/rongles/tronglePat.gif"]);
 const date = new Date();
 if (date.getMonth() === 3 && date.getDate() === 1) {
   // April fools, Trongle!
