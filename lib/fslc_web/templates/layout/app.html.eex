@@ -34,7 +34,6 @@
               <%= link "Rices", to: Routes.rice_path(@conn, :index) %>
               <%= link "User Pages", to: Routes.user_page_path(@conn, :index) %>
               <%= link "Stream", to: Routes.livestream_path(@conn, :index) %>
-              <%= link "Tilde", to: "http://fslc.club" %>
             </div>
           </div> 
           <%= if @current_user do %>
