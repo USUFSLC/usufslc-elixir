@@ -48,6 +48,11 @@ defmodule FslcWeb.Router do
     get "/users/pages", UserPageController, :index
     get "/users/pages/:username", UserPageController, :user
 
+    post "/petition", PetitionController, :create
+    get "/petition", PetitionController, :new
+    get "/petition/thanks", PetitionController, :thanks
+    get "/petition/validate", PetitionController, :validate_petition_token
+
     resources "/rices", RiceController, only: [:index, :show] 
     resources "/uploads", UploadController, only: [:index, :show]
   end
@@ -62,10 +67,11 @@ defmodule FslcWeb.Router do
 
   scope "/admin", FslcWeb do
     pipe_through [:browser, :require_admin_user]
-
+    
     get "/", AdminController, :index
     post "/stream/start", LivestreamController, :create
   	resources "/announcements", AnnouncementController
+    resources "/petitions", PetitionController
 
     get "/user-page-tokens/validate", UserPageController, :validate_user_page_form
     post "/user-page-tokens/validate", UserPageController, :validate_user_page_confirm

@@ -1,0 +1,9 @@
+<h1>USUFSLC Petition Confirmation for <%= @name %></h1>
+
+<p>
+  Hello! You are receiving this email because you added your signature to the USUFSLC petition for IT Printing support
+</p>
+
+<p>
+  If you wish to confirm your signature, please go to <a href="<%= @link %>"><%= @link %></a>.
+</p>

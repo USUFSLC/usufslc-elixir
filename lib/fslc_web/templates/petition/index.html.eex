@@ -1,0 +1,28 @@
+<h1>Listing Petitions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for petition <- @petitions do %>
+    <tr>
+      <td><%= petition.name %></td>
+      <td><%= petition.email %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.petition_path(@conn, :show, petition) %></span>
+        <span><%= link "Edit", to: Routes.petition_path(@conn, :edit, petition) %></span>
+        <span><%= link "Delete", to: Routes.petition_path(@conn, :delete, petition), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Petition", to: Routes.petition_path(@conn, :new) %></span>

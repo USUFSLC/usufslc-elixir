@@ -1,0 +1,7 @@
+<h1>Thanks, <%= @petition.name %>!</h1>
+<%= if @petition.validated do %>
+<p>Your signature has been validated.</p>
+<% else %>
+<h3 class="alert">You should get an email at <%= @petition.email %> to confirm your signature.</h3>
+<p><i>Maybe it's in your spam or trash?</i></p>
+<% end %>
