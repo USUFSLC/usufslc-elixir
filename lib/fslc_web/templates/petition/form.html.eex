@@ -12,15 +12,13 @@
   </p>
   <%= error_tag f, :name %>
   <p><span class="prompt"></span> <span class="command">printf "@usu.edu email >" && read email</span></p>
-  <p>4
-    usu.edu email >
+  <p>usu.edu email >
     <%= text_input f, :email, required: true %>
   </p>
   <%= error_tag f, :email %>
 
-<p>By signing below, I agree to share my name and usu.edu email with the Free Software and Linux Club, and to <strong><i>receive an email containing a link to confirm my signature</i></strong>.</p>
+  <p>By signing below, I agree to share my name and usu.edu email with the Free Software and Linux Club, and to <strong><i>receive an email containing a link to confirm my signature</i></strong>.</p>
   <div>
     <%= submit "Sign" %>
   </div>
-  <br>
 <% end %>
