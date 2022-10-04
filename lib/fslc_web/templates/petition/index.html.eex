@@ -1,11 +1,12 @@
 <h1>Listing Petitions</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
-
+      <th>Title</th>
+      <th>Validated</th>
       <th></th>
     </tr>
   </thead>
@@ -14,6 +15,8 @@
     <tr>
       <td><%= petition.name %></td>
       <td><%= petition.email %></td>
+      <td><%= petition.title %></td>
+      <td><%= petition.validated %></td>
 
       <td>
         <span><%= link "Show", to: Routes.petition_path(@conn, :show, petition) %></span>

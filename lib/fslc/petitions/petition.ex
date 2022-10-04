@@ -7,6 +7,7 @@ defmodule Fslc.Petitions.Petition do
     field :name, :string
     field :token, :string
     field :validated, :boolean, default: false
+    field :title, :string
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule Fslc.Petitions.Petition do
   @doc false
   def changeset(petition, attrs) do
     petition
-    |> cast(attrs, [:name, :email, :token, :validated])
+    |> cast(attrs, [:name, :email, :token, :validated, :title])
     |> downcase_email
     |> gen_token_if_token_empty
     |> validate_format(:email, ~r/@[a-zA-Z0-9.]*usu\.edu$/, message: "must be a valid email as a usu.edu domain or subdomain")

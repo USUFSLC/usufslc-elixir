@@ -6,6 +6,7 @@ defmodule Fslc.Repo.Migrations.CreatePetitions do
       add :name, :string
       add :email, :string
       add :token, :string
+      add :title, :string
       add :validated, :boolean
 
       timestamps()
