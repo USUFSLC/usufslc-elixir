@@ -1,3 +1,7 @@
+<h1>Help Get Linux Printing "Supported" on USU Campus!</h1> 
+
 <p>PETITION TEXT GOES HERE</p>
+
+<hr>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.petition_path(@conn, :create)) %>

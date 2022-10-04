@@ -5,7 +5,7 @@ defmodule Fslc.MixProject do
     [
       app: :fslc,
       version: "0.1.0",
-      elixir: "~> 1.12.2",
+      elixir: "~> 1.14.0",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
